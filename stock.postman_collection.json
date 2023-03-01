@@ -1,0 +1,738 @@
+{
+	"info": {
+		"_postman_id": "87c7c4ed-659a-4e5c-8ccb-df1152315715",
+		"name": "stock",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1328737"
+	},
+	"item": [
+		{
+			"name": "homepage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}",
+					"host": [
+						"{{base_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"protocolProfileBehavior": {
+				"followOriginalHttpMethod": false,
+				"disableUrlEncoding": false,
+				"strictSSL": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/logout?token=o5hioxdh9lokd4vw",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"logout"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "o5hioxdh9lokd4vw",
+							"description": "user token - required"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/products?token={{token}}&page=1&limit=25",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"description": "user token - required"
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"description": "page number - required if offset is null - default: 1"
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"description": "paging offset - ignored if \"page\" has value - default: 0",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "25",
+							"description": "number of products to show at one request - default: 10"
+						},
+						{
+							"key": "search[value]",
+							"value": "enes",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/product?token={{token}}&product_id=4",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"product"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"description": "user token - required"
+						},
+						{
+							"key": "product_id",
+							"value": "4",
+							"description": "required"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Ürünüm Gelsin",
+							"description": "product name - required",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Best for winter",
+							"description": "product description",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "35",
+							"description": "product price - required",
+							"type": "text"
+						},
+						{
+							"key": "discount",
+							"value": "0",
+							"description": "product discount",
+							"type": "text"
+						},
+						{
+							"key": "sale_status",
+							"value": "1",
+							"description": "product sale_status",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "1",
+							"description": "product status",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "34",
+							"description": "product quantity",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/product/add?token={{token}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"product",
+						"add"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"description": "user token - required"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product edit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "product_id",
+							"value": "1",
+							"description": "required",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Test Ürünü",
+							"description": "product name",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Ürün açıklaması demo",
+							"description": "product description",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "18,3",
+							"description": "product price",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "26",
+							"description": "product quantity",
+							"type": "text"
+						},
+						{
+							"key": "discount",
+							"value": "1",
+							"description": "product discount",
+							"type": "text"
+						},
+						{
+							"key": "sale_status",
+							"value": "0",
+							"description": "product sale_status",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "0",
+							"description": "product status",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/product/edit?token={{token}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"product",
+						"edit"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"description": "user token - required"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product delete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "product_id",
+							"value": "42",
+							"description": "required",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/product/delete?token={{token}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"product",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"description": "user token - required"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/customers?token={{token}}&page=1&limit=25",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customers"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"description": "user token - required"
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"description": "page number - required if offset is null - default: 1"
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"description": "paging offset - ignored if \"page\" has value - default: 0",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "25",
+							"description": "number of customers to show at one request - default: 10"
+						},
+						{
+							"key": "search[value]",
+							"value": "enes",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/customer?token={{token}}&customer_id=4",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customer"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"description": "user token - required"
+						},
+						{
+							"key": "customer_id",
+							"value": "4",
+							"description": "required"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customer add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Enes",
+							"description": "customer name - required",
+							"type": "text"
+						},
+						{
+							"key": "surname",
+							"value": "Kömür",
+							"description": "customer surname - required",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "5555555555",
+							"description": "customer phone",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "enes@test.dev",
+							"description": "customer email",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/customer/add?token={{token}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customer",
+						"add"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"description": "user token - required"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customer edit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "customer_id",
+							"value": "1",
+							"description": "required",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Enes",
+							"description": "customer name",
+							"type": "text"
+						},
+						{
+							"key": "surname",
+							"value": "DEV",
+							"description": "customer surname",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "4444444",
+							"description": "customer phone",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "dev@dev.dev",
+							"description": "customer email",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/customer/edit?token={{token}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customer",
+						"edit"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"description": "user token - required"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customer delete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "customer_id",
+							"value": "11",
+							"description": "required",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/customer/delete?token={{token}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customer",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"description": "user token - required"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sales",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/sales?token={{token}}&page=1&limit=25&search[value]=",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sales"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"description": "user token - required"
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"description": "page number - required if offset is null - default: 1"
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"description": "paging offset - ignored if \"page\" has value - default: 0",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "25",
+							"description": "number of sales to show at one request - default: 10"
+						},
+						{
+							"key": "search[value]",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sale add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "customer_id",
+							"value": "1",
+							"description": "customer id - required",
+							"type": "text"
+						},
+						{
+							"key": "product_id",
+							"value": "2",
+							"description": "product id - required",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "50",
+							"description": "quantity - required",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/sale/add?token={{token}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sale",
+						"add"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"description": "user token - required"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sale delete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "sale_id",
+							"value": "1",
+							"description": "required",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/sale/delete?token={{token}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sale",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"description": "user token - required"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://stock.test/backend"
+		},
+		{
+			"key": "username",
+			"value": "enes"
+		},
+		{
+			"key": "password",
+			"value": "leavemealone"
+		},
+		{
+			"key": "token",
+			"value": "c6ucuapobc8ky203"
+		}
+	]
+}

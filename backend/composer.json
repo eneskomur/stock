@@ -1,0 +1,11 @@
+{
+    "require": {
+        "mikecao/flight": "^2.0",
+        "catfan/medoo": "^2.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "app\\": ""
+        }
+    }
+}
